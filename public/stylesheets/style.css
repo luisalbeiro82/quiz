@@ -25,3 +25,15 @@ header nav section{
 nav span{
 	margin: 0px 10px 0px 0px;
 }
+div.imagen, img.autor-foto{
+	width: 120px;
+	height: 140px;
+}
+div.imagen{
+	padding-top: 18px;
+	margin: auto;
+	padding-left: 265px;
+}
+h2.autor,{
+	text-align: center;
+}
