@@ -29,6 +29,7 @@ $RECYCLE.BIN/
 .LSOverride
 node_modules
 npm-debug.log
+.env
 
 # Thumbnails
 ._*
