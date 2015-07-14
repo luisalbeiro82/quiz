@@ -1,4 +1,4 @@
-*{
+* {
 	margin: 0;
 	padding: 0;
 }
@@ -34,6 +34,6 @@ div.imagen{
 	margin: auto;
 	padding-left: 265px;
 }
-h2.autor,{
+h2.autor{
 	text-align: center;
 }
