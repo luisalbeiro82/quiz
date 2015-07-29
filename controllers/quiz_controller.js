@@ -19,6 +19,31 @@ exports.index=function(req,res){
 		res.render('quizes/index.ejs', {quizes:quizes});
 	}).catch(function(error){next (error);})
 };
+exports.search=function(req,res){
+		var filtro=('%' + req.query.search + '%').replace(/ /g, '%');
+		models.Quiz.findAll({
+			where: ["pregunta like ?", filtro],
+			order: 'pregunta ASC'
+		}).then(function(quizes) {
+				res.render('quizes/search.ejs', {quizes: quizes, errors: []});
+			}).catch(function(error) { next(error);})
+		
+};/*
+exports.index = function(req, res) {
+	if (req.query.search) {
+		var criterio = ('%' + req.query.search + '%').replace(/ /g, '%');
+		models.Quiz.findAll({
+			where: ["pregunta like ?", criterio],
+			order: 'pregunta ASC'
+		}).then(function(quizes) {
+				res.render('quizes/index', {quizes: quizes, errors: []});
+			}).catch(function(error) { next(error);})
+	}else {
+		models.Quiz.findAll().then(function(quizes) {
+			res.render('quizes/index', {quizes: quizes, errors: []});
+		}).catch(function(error) { next(error);})
+	}
+};*/
 
 //GET  /quizes/question
 exports.show=function(req,res){
