@@ -1,13 +1,15 @@
 
+<div>
+<form method="GET" action="">
+    <label for="search">Buscar preguntas</label>
+    <input type="text" name="q" id="search" value="<%= q %>" placeholder="Introduce texto a buscar" />
+    <input type="submit" value="Buscar">
+</form>
+</div>
 <table>
-	<tr><td>
-		<form method="get" action="quizes/search" >
-			Texto a buscar:
-			<input type="text" name="txtbusqueda" value="" />
-			<input type="submit" value="Buscar"/>
-		</form><br>
-	</td></tr>
-	<% var i; for(i=0; i < quizes.length; i++){ %>
-		<tr><td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>
-	<% } %>
+    <% for (var i=0, len=quizes.length; i < len; i++) {%>
+        <tr>
+            <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+        </tr>
+    <% } %>
 </table>

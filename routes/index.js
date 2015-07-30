@@ -11,7 +11,7 @@ router.param('quizId',quizController.load);//autoload :quizId
 
 //definicion de rutas de quises
 router.get('/quizes', quizController.index);
-router.get('/quizes/search', quizController.search);
+//router.get('/quizes/search', quizController.search);
 router.get('/quizes/:quizId(\\d+)',quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer',quizController.answer);
 router.get('/autor',quizController.autor);

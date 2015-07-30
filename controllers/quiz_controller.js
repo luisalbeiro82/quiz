@@ -13,12 +13,30 @@ exports.load=function(req, res, next, quizId){
 		}
 	).catch(function(error){next (error);})
 };
+
+exports.index = function(req, res){
+    var filters = {};
+    var q = req.query.q || '';
+
+    if (q)
+        filters = {
+            where: {
+                pregunta:{like: '%' + q + '%'}
+            }
+        }
+
+    models.Quiz.findAll(filters).then(function(quizes){
+        res.render('quizes/index', {quizes: quizes, q: q});
+    });
+}
 //GET  /quizes
+/*
 exports.index=function(req,res){
 	models.Quiz.findAll().then(function(quizes){
 		res.render('quizes/index.ejs', {quizes:quizes});
 	}).catch(function(error){next (error);})
 };
+
 exports.search=function(req,res){
 		var filtro=('%' + req.query.search + '%').replace(/ /g, '%');
 		models.Quiz.findAll({
@@ -28,7 +46,9 @@ exports.search=function(req,res){
 				res.render('quizes/search.ejs', {quizes: quizes, errors: []});
 			}).catch(function(error) { next(error);})
 		
-};/*
+};
+*/
+/*
 exports.index = function(req, res) {
 	if (req.query.search) {
 		var criterio = ('%' + req.query.search + '%').replace(/ /g, '%');
