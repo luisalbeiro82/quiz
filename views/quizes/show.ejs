@@ -1,7 +1,16 @@
+<%
+var mapaTematico = {
+  otro:"Otro",
+  humanidades:"Humanidades",
+  ocio:"Ocio",
+  ciencia:"Ciencia",
+  tecnologia:"Tecnología"
+}
+%>
 <form method="get" action="/quizes/<%= quiz.id %>/answer">
-
-	Pregunta:<%= quiz.pregunta %><P>
-	<input type="text" name="respuesta" value="Respuesta" />
-	<input type="submit" value="Enviar"/>
+  Temática: <%= mapaTematico[quiz.tema] %><br />
+  Pregunta: <%= quiz.pregunta %><br />
+  <input type="text" name="respuesta" value="Responda aquí" />
+  <input type="submit" value="Enviar" />
 </form>
 	

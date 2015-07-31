@@ -22,13 +22,19 @@
 			<span><a href="/autor">Creditos</a></span>
 		</nav>
 		<section class="main" id="s1">
-			<%- body %>
-		</section>
+		    <% if(errors.length) { %>
+		      <span id="ErrorMsgs">
+		        Corregir errores:<br/>
+		        <% for(var i in errors) {%>
+		          <span><%= errors[i].message %></span><br/>
+		        <% } %>
+		      </span>
+		    <% } %>
+		    <div><%- body %></div>
+  		</section>
 		<footer class="main" id="f1">
-			<a href="http://es.wikipedia.org/wiki/Quiz">
-				¿Que es quiz?</a><p>
-			<a href="https://github.com/luisalbeiro82/quiz.git">
-				GitHub</a>
+			<a href="http://es.wikipedia.org/wiki/Quiz">¿Que es quiz?</a><p>
+			<a href="https://github.com/luisalbeiro82/quiz.git">GitHub</a>
 		</footer>
 	</div>
 </body>

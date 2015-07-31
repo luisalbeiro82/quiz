@@ -5,7 +5,7 @@
 body {
   font: 16px georgia, serif;
 }
-#pagewrap{
+#page-wrap{
 	margin: 2% auto;
 	color: white;
 }
@@ -37,3 +37,4 @@ div.imagen{
 h2.autor{
 	text-align: center;
 }
+#ErrorMsgs {color: #f61; font-size: smaler}

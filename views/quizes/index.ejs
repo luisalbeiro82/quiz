@@ -1,15 +1,34 @@
 
 <div>
-<form method="GET" action="">
-    <label for="search">Buscar preguntas</label>
-    <input type="text" name="q" id="search" value="<%= q %>" placeholder="Introduce texto a buscar" />
-    <input type="submit" value="Buscar">
-</form>
+  <%
+  var mapaTematico = {
+    otro:"Otro",
+    humanidades:"Humanidades",
+    ocio:"Ocio",
+    ciencia:"Ciencia",
+    tecnologia:"Tecnología"
+  }
+  %>
+  <form method="get" action="/quizes">
+    Busqueda: <input type="text" name="search" value="" placeholder="Introduce texto a buscar" />
+    <input type="submit" value="Buscar" />
+  </form>
 </div>
 <table>
-    <% for (var i=0, len=quizes.length; i < len; i++) {%>
-        <tr>
-            <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
-        </tr>
-    <% } %>
-</table>
+<% var i;for(i=0; i<quizes.length; i++){ %>
+  <tr>
+    <td><%= mapaTematico[quizes[i].tema] %></td>
+    <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+    <td><a href="quizes/<%= quizes[i].id %>/edit">editar</a></td>
+    <td>
+      <form method="post" action="quizes/<%= quizes[i].id%>?_method=delete">
+        <button type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta%>');">
+          borrar
+        </button>
+      </form>
+    </td>
+  </tr>
+<% } %>
+</table><p>
+
+<a href="/quizes/new"><button type="button">Crear Pregunta</button></a>
