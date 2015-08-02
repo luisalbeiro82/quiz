@@ -80,15 +80,16 @@ exports.update = function(req, res){
   req.quiz.pregunta = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
 
-  req.quiz.validate()
-    .then(function(err){
-      if(err){
-        res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
-      }else{
-        req.quiz.save({fields:["tema","pregunta","respuesta"]})
-          .then(function(){ res.redirect('/quizes'); });
-      }
-    });
+  var errors= req.quiz.validate()
+   // .then(function(err){
+  //var errors = quiz.validate();
+  if(errors){
+    res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
+  }else{
+    req.quiz.save({fields:["tema","pregunta","respuesta"]})
+      .then(function(){ res.redirect('/quizes')});
+  }
+    //});
 }
 
 //DELETE /quizes/:quizId
