@@ -84,7 +84,7 @@ exports.update = function(req, res){
    // .then(function(err){
   //var errors = quiz.validate();
   if(errors){
-    res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
+    res.render('quizes/edit', {quiz: req.quiz, errors: errors.errors});
   }else{
     req.quiz.save({fields:["tema","pregunta","respuesta"]})
       .then(function(){ res.redirect('/quizes')});
