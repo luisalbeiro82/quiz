@@ -57,10 +57,10 @@ exports.new = function(req, res){
 // POST /quizes/create
 exports.create = function(req, res){
   var quiz=models.Quiz.build(req.body.quiz);
-  var errors = quiz.validate();
+  var err = quiz.validate();
   //quiz.validate().then(function(err){
-    if(errors){
-      res.render('quizes/new', {quiz: quiz, errors: errors.errors});
+    if(err){
+      res.render('quizes/new', {quiz: quiz, errors: err.errors});
     }else{
       quiz.save({fields:["tema","pregunta","respuesta"]}).then(function(){
         res.redirect('/quizes')});
@@ -80,11 +80,11 @@ exports.update = function(req, res){
   req.quiz.pregunta = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
 
-  var errors= req.quiz.validate()
+  var err= req.quiz.validate()
    // .then(function(err){
   //var errors = quiz.validate();
-  if(errors){
-    res.render('quizes/edit', {quiz: req.quiz, errors: errors.errors});
+  if(err){
+    res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
   }else{
     req.quiz.save({fields:["tema","pregunta","respuesta"]})
       .then(function(){ res.redirect('/quizes')});
