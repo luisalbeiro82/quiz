@@ -7,10 +7,17 @@ var mapaTematico = {
   tecnologia:"Tecnología"
 }
 %>
+
 <form method="get" action="/quizes/<%= quiz.id %>/answer">
   Temática: <%= mapaTematico[quiz.tema] %><br />
   Pregunta: <%= quiz.pregunta %><br />
   <input type="text" name="respuesta" value="Responda aquí" />
   <input type="submit" value="Enviar" />
 </form>
+
+<p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p>
+<p><strong>Comentarios:</strong></p>
+<% for(index in quiz.Comment){%>
+		<p>-<% quiz.Comment[index].texto %></p>
+ <% } %>
 	
