@@ -106,5 +106,5 @@ exports.destroy = function(req, res){
 
 
 exports.autor=function(req,res){
-	res.render('autor',{nombre:'Luis albeiro Hernandez P'});	
+	res.render('autor',{nombre:'Luis albeiro Hernandez P',errors:[]});	
 };
