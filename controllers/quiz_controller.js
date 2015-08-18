@@ -69,7 +69,7 @@ exports.create = function(req, res){
         res.redirect('/quizes');
       });
     }
-  //});
+  });
 }
 
 //GET /quizes/:quizId(\\d+)/edit
@@ -94,7 +94,7 @@ exports.update = function(req, res){
         req.quiz.save({fields:["tema","pregunta","respuesta"]})
           .then(function(){ res.redirect('/quizes'); });
       }
-    //});
+    });
 }
 
 //DELETE /quizes/:quizId
